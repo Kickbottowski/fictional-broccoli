@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <style>
+        .output {
+            width: 200px;
+            ;
+            height: 20px;
+            background-color: black;
+        }
+        
+        .face {
+            border: 2px solid black;
+            margin: auto;
+            width: 430px;
+            padding: 25px;
+            border-radius: 30px;
+            background-color: grey;
+        }
+        
+        .display {
+            background-color: black;
+            border-radius: 30px;
+            border: 2px solid red;
+            color: black;
+        }
+        
+        td {
+            width: 100px;
+            ;
+            height: 100px;
+        }
+        
+        button {
+            margin-left: 10px;
+            margin-left: 10px;
+            border-radius: 40px;
+            font-size: 200%;
+            font-weight: bolder;
+            width: 80px;
+            height: 80px;
+            background-color: black;
+            color: white;
+        }
+        
+        table {
+            margin: auto;
+        }
+        
+        tr {
+            margin: auto;
+        }
+        
+        .gap {
+            height: 2px;
+        }
+        
+        .output {
+            color: white;
+            height: 100px;
+            width: 400px;
+            border-radius: 30px;
+            border-style: none;
+            font-size: 300%;
+            font-family: Orbitron, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="face">
+        <table>
+
+            <tr>
+                <td class="display" colspan="4"><input type="text" id="cal" readonly class="output"></td>
+            </tr>
+
+            <tr>
+                <td><button class="value1 value2" onclick="task('7')" value="7" type="button">7</button></td>
+                <td><button class="value1 value2" onclick="task('8')" value="8" type="button">8</button></td>
+                <td><button class="value1 value2" onclick="task('9')" value="9" type="button">9</button></td>
+                <td><button id="divide" onclick="task('/')" type="button">&#247;</button></td>
+            </tr>
+
+            <tr>
+                <td><button class="value1 value2" onclick="task('4')" type="button" value="4">4</button></td>
+                <td><button class="value1 value2" onclick="task('5')" value="5" type="button">5</button></td>
+                <td><button class="value1 value2" onclick="task('6')" value="6" type="button">6</button></td>
+                <td><button id="product" onclick="task('*')" type="button">x</button></td>
+            </tr>
+            <tr>
+                <td><button class="value1 value2" onclick="task('1')" value="1" type="button">1</button></td>
+                <td><button class="value1 value2" onclick="task('2')" value="2" type="button">2</button></td>
+                <td><button class="value1 value2" onclick="task('3')" value="3" type="button">3</button></td>
+                <td><button id="subtraction" onclick="task('-')" type="button">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="value1 value2" onclick="task('0')" value="0" type="button">0</button></td>
+                <td><button class="value1 value2" onclick="task('.')" value="." type="button">.</button></td>
+                <td><button id="addition" onclick="task('+')" type="button">+</button></td>
+                <td><button id="equal" onclick="final()" type="button">=</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        console.log(cal);
+
+        function task(valu) {
+            document.getElementById("cal").value += valu;
+        }
+
+        function final() {
+
+            var a = cal.value;
+
+
+            pattern2 = /\*{2}|\-{2}|\+{2}|\\{2}/g;
+
+            if (pattern2.test(a) == false) {
+                var sol = eval(a);
+                document.getElementById("cal").value = sol;
+                console.log(sol);
+            } else {
+                document.getElementById("cal").value = "Error"
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
