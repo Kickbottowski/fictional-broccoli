@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <style>
+        body {
+            margin-top: 50px;
+        }
+        
+        .output {
+            width: 200px;
+            height: 20px;
+            background-color: black;
+        }
+        
+        .face {
+            border: 2px solid black;
+            margin: auto;
+            width: 400px;
+            padding: 25px;
+            border-radius: 30px;
+            background-color: grey;
+        }
+        
+        .display {
+            background-color: black;
+            border-radius: 30px;
+            border: 2px solid red;
+            color: black;
+        }
+        
+        td {
+            width: 70px;
+            height: 70px;
+        }
+        
+        button {
+            margin-left: 10px;
+            margin-left: 10px;
+            border-radius: 40px;
+            font-size: 200%;
+            font-weight: bolder;
+            width: 60px;
+            height: 60px;
+            background-color: black;
+            color: white;
+        }
+        
+        table {
+            margin: auto;
+        }
+        
+        tr {
+            margin: auto;
+        }
+        
+        .gap {
+            height: 2px;
+        }
+        
+        .output {
+            color: white;
+            height: 100px;
+            width: 400px;
+            border-radius: 30px;
+            border-style: none;
+            font-size: 300%;
+            font-family: Orbitron, sans-serif;
+        }
+        
+        .on {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="face">
+        <table>
+
+            <tr>
+                <td class="display" colspan="4"><input type="text" id="cal" readonly class="output"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button type="reset" class="on" onclick="cal.value=''" value="C">C</button></td>
+            </tr>
+
+            <tr>
+                <td><button id="seven" value="7" type="button">7</button></td>
+                <td><button id="eight" value="8" type="button">8</button></td>
+                <td><button id="nine" value="9" type="button">9</button></td>
+                <td><button id="divide" value="/" type="button">&#247;</button></td>
+            </tr>
+
+            <tr>
+                <td><button id="four" type="button" value="4">4</button></td>
+                <td><button id="five" value="5" type="button">5</button></td>
+                <td><button id="six" value="6" type="button">6</button></td>
+                <td><button id="product" value="*" type="button">x</button></td>
+            </tr>
+            <tr>
+                <td><button id="one" value="1" type="button">1</button></td>
+                <td><button id="two" value="2" type="button">2</button></td>
+                <td><button id="three" value="3" type="button">3</button></td>
+                <td><button id="subtraction" value="-" type="button">-</button></td>
+            </tr>
+            <tr>
+                <td><button id="zero" value="0" type="button">0</button></td>
+                <td><button id="dot" value="." type="button">.</button></td>
+                <td><button id="addition" value="+" type="button">+</button></td>
+                <td><button id="equal" type="button">=</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var numbers1 = "";
+        var value1;
+        var value2;
+        var final;
+        var a;
+        var temp1;
+
+        document.getElementById("seven").addEventListener("click", valu);
+        document.getElementById("eight").addEventListener("click", valu);
+        document.getElementById("nine").addEventListener("click", valu);
+        document.getElementById("four").addEventListener("click", valu);
+        document.getElementById("five").addEventListener("click", valu);
+        document.getElementById("six").addEventListener("click", valu);
+        document.getElementById("one").addEventListener("click", valu);
+        document.getElementById("two").addEventListener("click", valu);
+        document.getElementById("three").addEventListener("click", valu);
+        document.getElementById("addition").addEventListener("click", sum);
+        document.getElementById("addition").addEventListener("click", valu);
+        document.getElementById("subtraction").addEventListener("click", sum);
+        document.getElementById("subtraction").addEventListener("click", valu);
+        document.getElementById("product").addEventListener("click", sum);
+        document.getElementById("product").addEventListener("click", valu);
+        document.getElementById("divide").addEventListener("click", sum);
+        document.getElementById("divide").addEventListener("click", valu);
+        document.getElementById("equal").addEventListener("click", calculation);
+
+
+
+
+        function valu(numb) {
+            document.getElementById("cal").value = document.getElementById("cal").value + this.value;
+            numbers1 = numbers1 + this.value;
+
+
+        }
+
+        function sum() {
+            value1 = numbers1.length;
+            console.log(value1);
+            value2 = "+";
+
+        }
+
+        function calculation() {
+            var a = "";
+            var b = "";
+            for (i = 0; i < value1; i++) {
+                a = a + numbers1[i];
+            }
+            a = parseInt(a);
+
+
+            for (i = value1 + 1; i < numbers1.length; i++) {
+                b = b + numbers1[i];
+            }
+            b = parseInt(b);
+            p = numbers1[value1];
+            var divi = "/";
+            var sub = "-";
+            var addi = "+";
+            var prod = "*";
+            console.log(numbers1[value1]);
+            if (p == addi) {
+                document.getElementById("cal").value = a + b;
+            }
+            if (p == sub) {
+                var zzz = a - b
+
+                document.getElementById("cal").value = a - b;
+            }
+            if (p == prod) {
+
+                document.getElementById("cal").value = a * b;
+            }
+            if (p == divi) {
+
+                document.getElementById("cal").value = a / b;
+            }
+        }
+    </script>
+</body>
+
+</html>
