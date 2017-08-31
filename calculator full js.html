@@ -1,3 +1,4 @@
+ Z
 <!DOCTYPE html>
 <html>
 
@@ -17,7 +18,7 @@
         }
         
         .face {
-            border: 2px solid black;
+            Z2 border: 2px solid black;
             margin: auto;
             width: 400px;
             padding: 25px;
@@ -80,7 +81,7 @@
 
 <body>
     <div class="face">
-        <table>
+        <table id="fle">
 
             <tr>
                 <td class="display" colspan="4"><input type="text" id="cal" readonly class="output"></td>
@@ -89,7 +90,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><button type="reset" class="on" onclick="cal.value=''" value="C">C</button></td>
+                <td><button type="reset" id="clr" class="on" value="c">C</button></td>
             </tr>
 
             <tr>
@@ -124,9 +125,9 @@
         var value1;
         var value2;
         var final;
-        var a;
-        var temp1;
 
+        var temp1;
+        document.getElementById("clr").addEventListener("click", clean)
         document.getElementById("seven").addEventListener("click", valu);
         document.getElementById("eight").addEventListener("click", valu);
         document.getElementById("nine").addEventListener("click", valu);
@@ -145,14 +146,20 @@
         document.getElementById("divide").addEventListener("click", sum);
         document.getElementById("divide").addEventListener("click", valu);
         document.getElementById("equal").addEventListener("click", calculation);
+        document.getElementById("fle").addEventListener("click", cleanMaster)
 
+        var a = "";
+        var b = "";
 
-
+        function clean() {
+            document.getElementById("cal").value = "";
+        }
 
         function valu(numb) {
+
             document.getElementById("cal").value = document.getElementById("cal").value + this.value;
             numbers1 = numbers1 + this.value;
-
+            console.log(numbers1);
 
         }
 
@@ -164,40 +171,62 @@
         }
 
         function calculation() {
-            var a = "";
-            var b = "";
+
             for (i = 0; i < value1; i++) {
                 a = a + numbers1[i];
+                console.log(a + "a");
+
+                a = parseInt(a);
             }
-            a = parseInt(a);
+
 
 
             for (i = value1 + 1; i < numbers1.length; i++) {
                 b = b + numbers1[i];
+                if (i > value1 + 1) {
+                    b = parseInt(b / 10);
+                } else {
+                    b = parseInt(b);
+                }
+                console.log(b + "b");
             }
-            b = parseInt(b);
+
             p = numbers1[value1];
             var divi = "/";
             var sub = "-";
             var addi = "+";
             var prod = "*";
-            console.log(numbers1[value1]);
+
             if (p == addi) {
+
                 document.getElementById("cal").value = a + b;
             }
             if (p == sub) {
+
                 var zzz = a - b
 
                 document.getElementById("cal").value = a - b;
             }
             if (p == prod) {
 
+
                 document.getElementById("cal").value = a * b;
             }
             if (p == divi) {
 
-                document.getElementById("cal").value = a / b;
+                if (b == 0) {
+                    document.getElementById("cal").value = "Error";
+                } else
+                    document.getElementById("cal").value = a / b;
+
+                function cleanMaster() {
+                    document.getElementById
+                }
+
             }
+
+
+
         }
     </script>
 </body>
